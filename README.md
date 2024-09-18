@@ -11,7 +11,6 @@ This is a Laravel project for managing transport units with features for creatin
 - [Frontend Setup with Vite](#frontend-setup-with-vite)
 - [Testing](#testing)
 - [Overview](#overview)
-- [Troubleshooting](#troubleshooting)
 
 ## Requirements
 
@@ -26,8 +25,8 @@ This is a Laravel project for managing transport units with features for creatin
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/your-repository.git
-   cd your-repository
+   git clone https://github.com/Mathiasjv/transport-units
+   cd transport-units
    ```
 
 2. **Install PHP Dependencies**
@@ -55,14 +54,15 @@ To seed the database with initial data:
 1. **Configure Database Connection**
 
    Update your `.env` file with your database credentials:
+   On local use just don't update it to create a local version
 
    ```dotenv
-   DB_CONNECTION=mysql
-   DB_HOST=127.0.0.1
-   DB_PORT=3306
-   DB_DATABASE=your_database
-   DB_USERNAME=your_username
-   DB_PASSWORD=your_password
+   DB_CONNECTION=sqlite
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=laravel
+# DB_USERNAME=root
+# DB_PASSWORD=
    ```
 
 2. **Run Migrations**
