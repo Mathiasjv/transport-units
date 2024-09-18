@@ -6,8 +6,13 @@
       <button @click="filterType('trailer')" :class="{ active: filter === 'trailer' }">Trailers</button>
     </div>
     <input type="text" v-model="search" placeholder="Search..." @input="fetchUnits" class="search-input" />
-    <div v-for="unit in units" :key="unit.id" class="unit-card">
+    <div v-for="unit in units.data" :key="unit.id" class="unit-card">
       <h3>{{ unit.name }} ({{ unit.type }})</h3>
+      <button @click="removeUnit(unit.id)" class="remove-button">x</button>
+    </div>
+    <div class="pagination">
+      <button @click="fetchUnits(units.prev_page_url)" :disabled="!units.prev_page_url">Previous</button>
+      <button @click="fetchUnits(units.next_page_url)" :disabled="!units.next_page_url">Next</button>
     </div>
     <div class="create-unit">
       <input v-model="newUnit.name" placeholder="Name" class="input-field" />
@@ -26,7 +31,11 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      units: [],
+      units: {
+        data: [],            // Stores unit data
+        prev_page_url: null, // URL for the previous page
+        next_page_url: null  // URL for the next page
+      },
       search: '',
       filter: 'all',
       newUnit: {
@@ -36,8 +45,8 @@ export default {
     };
   },
   methods: {
-    fetchUnits() {
-      axios.get('/api/transport-units', {
+    fetchUnits(url = '/api/transport-units') {
+      axios.get(url, {
         params: {
           type: this.filter,
           search: this.search
@@ -50,16 +59,24 @@ export default {
     },
     filterType(type) {
       this.filter = type;
-      this.fetchUnits();
+      this.fetchUnits(); // Fetch data with updated filter
     },
     createUnit() {
       axios.post('/api/transport-units', this.newUnit)
         .then(response => {
-          this.units.push(response.data);
+          this.units.data.push(response.data);
           this.newUnit.name = '';
           this.newUnit.type = 'truck'; // Reset to default
         }).catch(error => {
           console.error('There was an error creating the unit!', error);
+        });
+    },
+    removeUnit(id) {
+      axios.delete(`/api/transport-units/${id}`)
+        .then(() => {
+          this.units.data = this.units.data.filter(unit => unit.id !== id);
+        }).catch(error => {
+          console.error('There was an error removing the unit!', error);
         });
     }
   },

@@ -21,7 +21,7 @@ class TransportUnitController extends Controller
             $query->where('name', 'like', '%' . $request->search . '%');
         }
 
-        $units = $query->get();
+        $units = $query->paginate(10); // Pagination
 
         return response()->json($units);
     }
@@ -36,5 +36,13 @@ class TransportUnitController extends Controller
         $unit = TransportUnit::create($request->all());
 
         return response()->json($unit, 201);
+    }
+
+    public function destroy($id)
+    {
+        $unit = TransportUnit::findOrFail($id);
+        $unit->delete();
+
+        return response()->json(['message' => 'Unit deleted successfully']);
     }
 }
