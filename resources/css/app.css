@@ -1,0 +1,131 @@
+/*
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*/
+
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f9;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 15vh auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.tabs button.active {
+  background-color: #2c9468;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.tabs button:hover {
+  background-color: #d6d6d6;
+}
+
+/* Search Input */
+.search-input {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 20px;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #2c9468;
+  border-radius: 8px;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-input:focus {
+  border-color: #0056b3;
+}
+
+/* Unit Card */
+.unit-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: #f9f9f9;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.unit-card:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.unit-card h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.unit-type {
+  color: #666;
+}
+
+/* Create Unit */
+.create-unit {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-field, .select-field, .create-button {
+  width: 100%;
+  max-width: 600px;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+.input-field:focus, .select-field:focus {
+  border-color: #007bff;
+}
+
+/* Button */
+.create-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.create-button:hover {
+  background-color: #2c9468;
+  transform: scale(1.05);
+}
