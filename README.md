@@ -58,11 +58,6 @@ To seed the database with initial data:
 
    ```dotenv
    DB_CONNECTION=sqlite
-# DB_HOST=127.0.0.1
-# DB_PORT=3306
-# DB_DATABASE=laravel
-# DB_USERNAME=root
-# DB_PASSWORD=
    ```
 
 2. **Run Migrations**
